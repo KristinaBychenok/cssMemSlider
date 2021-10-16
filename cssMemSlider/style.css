@@ -71,12 +71,23 @@
     z-index: 3;
 }
 
-.controls label{
+.controls{
+    display: flex;
+}
+
+.controls>label{
     cursor: pointer;
 	display: inline-block;
-	height: 20px;
+	height: 50px;
+	width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.controls>label>div{
+    height: 20px;
 	width: 20px;
-    margin-left: 10px;
 	background: #71ABFF;
     border:1px solid #71ABFF;
 	-webkit-border-radius: 50%;
@@ -89,17 +100,17 @@
 	transition: background ease-in-out .5s, border ease-in-out .5s;
 }
 
-.controls label:hover{
+.controls>label:hover div{
     background: white;
     border:1px solid white;
     transition: background ease-in-out .5s, border ease-in-out .5s;
 }
 
-#slide1:checked ~ .slide-options div.controls label:nth-of-type(1),
-#slide2:checked ~ .slide-options div.controls label:nth-of-type(2),
-#slide3:checked ~ .slide-options div.controls label:nth-of-type(3),
-#slide4:checked ~ .slide-options div.controls label:nth-of-type(4),
-#slide5:checked ~ .slide-options div.controls label:nth-of-type(5) {
+#slide1:checked ~ .slide-options div.controls label:nth-of-type(1) div,
+#slide2:checked ~ .slide-options div.controls label:nth-of-type(2) div,
+#slide3:checked ~ .slide-options div.controls label:nth-of-type(3) div,
+#slide4:checked ~ .slide-options div.controls label:nth-of-type(4) div,
+#slide5:checked ~ .slide-options div.controls label:nth-of-type(5) div {
 	background: none;
 }
 
