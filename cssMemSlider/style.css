@@ -37,8 +37,6 @@
     height: 50%;
     margin-top: 2%;
     background: rgb(46, 44, 44);
-    overflow: hidden;
-    position: relative;
 }
 
 .slides{
@@ -53,25 +51,53 @@
     -webkit-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
 	-moz-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
 	-o-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
-	transition: transform ease-in-out .5s, opacity ease-in-out .5s;
-    position: absolute;
+	transition: transform ease-in-out .5s, opacity ease-in-out .5s, background-image ease-in-out .5s;
     margin: 0 auto;
-    top: 0;
 }
 
-.slide1{
+#slide1:checked ~ .slider > .slides{
+    opacity: 1;
+	z-index: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
     background-image: url(./assets/img/mem1.jpg);
 }
-.slide2{
+#slide2:checked ~ .slider > .slides{
+    opacity: 1;
+	z-index: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
     background-image: url(./assets/img/mem2.jpg);
 }
-.slide3{
+#slide3:checked ~ .slider > .slides{
+    opacity: 1;
+	z-index: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
     background-image: url(./assets/img/mem3.jpg);
 }
-.slide4{
+#slide4:checked ~ .slider > .slides{
+    opacity: 1;
+	z-index: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
     background-image: url(./assets/img/mem4.jpg);
 }
-.slide5{
+#slide5:checked ~ .slider > .slides{
+    opacity: 1;
+	z-index: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
     background-image: url(./assets/img/mem5.jpg);
 }
 
@@ -112,10 +138,28 @@
 	transition: background ease-in-out .5s, border ease-in-out .5s;
 }
 
-.controls>label:hover div{
+
+.controls>label:hover .label-area{
     background: white;
     border:1px solid white;
     transition: background ease-in-out .5s, border ease-in-out .5s;
+}
+
+.controls>label:active .label-area{
+    background: #3874c9;
+    border:1px solid #3874c9;
+    transition: background ease-in-out .5s, border ease-in-out .5s;
+}
+
+.controls>label ::after{
+    height: 20px;
+	width: 20px;
+	background: #dcf117;
+    display: none;
+}
+
+.controls>label:active .controls>label::after{
+    display: block;
 }
 
 #slide1:checked ~ .slide-options div.controls label:nth-of-type(1) div,
@@ -126,29 +170,18 @@
 	background: none;
 }
 
-#slide1:checked ~ .slider > .slide1,
-#slide2:checked ~ .slider > .slide2,
-#slide3:checked ~ .slider > .slide3,
-#slide4:checked ~ .slider > .slide4,
-#slide5:checked ~ .slider > .slide5 {
-	opacity: 1;
-	z-index: 1;
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-o-transform: scale(1);
-	transform: scale(1);
-}
-
 .slide-description{
-    position: relative;
-    display: flex;
+    display: block;
     width: 250px;
     height: 50px;
+    position: relative;
 }
 
 .slide-description>p{
-    font: 300 50px/50px 'Roboto', serif;
-    display: flex;
+    position: absolute;
+    top: 0;
+    font: 300 40px/50px 'Roboto', serif;
+    width: 100%;
     opacity: 0;
     z-index: 0;
     transform: scale(1.5);
@@ -156,9 +189,6 @@
 	-moz-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
 	-o-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
 	transition: transform ease-in-out .5s, opacity ease-in-out .5s;
-    position: absolute;
-    left: 0;
-    top: 0;
 }
 
 #slide1:checked ~ .slide-options > .slide-description > .slide-description-1,
@@ -166,10 +196,42 @@
 #slide3:checked ~ .slide-options > .slide-description > .slide-description-3,
 #slide4:checked ~ .slide-options > .slide-description > .slide-description-4,
 #slide5:checked ~ .slide-options > .slide-description > .slide-description-5 {
-	opacity: 1;
+    opacity: 1;
 	z-index: 1;
 	-webkit-transform: scale(1);
 	-moz-transform: scale(1);
 	-o-transform: scale(1);
 	transform: scale(1);
+}
+
+
+@media (min-device-width : 320px) and (max-device-width : 480px) {
+    .container{
+        max-width: 480px;
+        margin: 0 auto;
+        width: calc(100% - 40px);
+    }
+
+    .slide-options{
+        flex-direction: column-reverse;
+    }
+
+    .controls>label{
+        height: 30px;
+        width: 30px;
+        justify-content: center;
+    }
+
+    .controls>label>div{
+        height: 15px;
+        width: 15px;
+    }
+
+    .slide-description{
+        align-self: flex-start;
+    }
+
+    .slide-description>p{
+        font: 300 30px/50px 'Roboto', serif;
+    }
 }
